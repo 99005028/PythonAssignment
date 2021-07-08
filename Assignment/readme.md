@@ -1,1 +1,77 @@
+## 1.In a given list of elements, all elements are equal except the one.Write a code to find the odd manout (Stray number).
+
+a=[1,3,5,7,9,2]
+for i in range(len(a)):
+    if(a[i]%2==1):
+        pass
+    else:
+        print("Odd man is:"+str(a[i]))
+
+## 2. In a given list of elements, find the elements which is close to its mean
+.
+
+n=list(map(int,input().split(" ")))
+n.sort()
+print(n)
+b=n
+a=sum(n)/len(n)
+print(a)
+for i in range(len(n)):
+  if n[i]>=a:
+    if(n[i]==a):
+      print(a)
+    else:
+      x=a-n[i]
+      y=a-n[i-1]
+      if x<y:
+        print(n[i-1])
+        break
+      else:
+        print(n[i]) 
+        break
+
+## 3.Find the average speed of vehicle, given the distance travelled for fixed time intervals.
+
+n=[0,0.5,1.0,2.5,3.0,4.5,5.0]
+avgspeed=sum(n)/len(n)
+print(avgspeed)
+
+## 4. Find the no.of people in a bus, given the data of people onboarding & alighting at each station.
+
+n=int(input("Enter the no.of peoples in bus"))
+ob=int(input("Enter the no.of peoples those are onboarding"))
+a=int(input("Enter the no.of peoples those are alighting"))
+k=n+ob
+k=k-a
+print(k)
+
+## 5.Find the missing number, given the original list and modified one
+
+ol=[1,2,3,4,5]
+ml=[1,2,8,3,4,5]
+for i in (ml):
+  if i in ol:
+    pass
+  else:
+    print(i)
+
+## 6. Find the difference between two lowest numbers in the list.
+
+n=list(map(int,input().split(" ")))
+n.sort()
+a=n[1]-n[0]
+print(a)
+
+## 7. In a given list, count no of elements smaller than their mean.
+
+n=list(map(int,input().split(" ")))
+c=0
+a=sum(n)/len(n)
+print(a)
+for i in range(len(n)):
+  if n[i]<=a:
+    c=c+1
+print(c)
+
+
 
