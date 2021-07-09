@@ -1,9 +1,63 @@
 ## 1. Correct the malformed time string, for e.g "5:70:65" to "6:11:05"
 
+time="5:70:65"
+hours,minutes,seconds=map(int,time.split(":"))
+if seconds>60:
+  minutes1=seconds//60
+  seconds=seconds%60
+  minutes+=minutes1
+  seconds=str(seconds)
+if minutes>60:
+  hours1=minutes//60
+  minutes=minutes%60
+  hours+=hours1
+  minutes=str(minutes)
+if hours>23:
+  hours=hours-23
+   hours=str(hours)
+print("{}:{}:{}".format(hours.zfill(2),minutes.zfill(2),seconds.zfill(2)))
+
+
 ## 2. Correct the malformed date string, for e.g. "45/8/2018" to "14/9/2018"
-.
+
+date="45/8/2018"
+d,m,y=map(int,d.split("/"))
+if m>12:
+    y+=1
+    m=m-12
+if m==2:
+    if d>28:
+        d-=28
+        m=3
+
+elif m in [4,6,9,11]:
+   if d>30:
+        m+=1
+        d=d-30
+elif m in [1,3,5,7,8,10,12]:
+    if d>31:
+        d-=31
+        if m>12:
+            m-=12
+            y+=1
+        else:
+            m+=1
+d=str(d)
+m=str(m)
+y=str(y)
+print("{}/{}/{}".format(d.zfill(2),m.zfill(2),y.zfill(4)))
+
 
 ## 3. Convert ip address from "a.b.c.d" format into integer and vice versa.
+
+addr=input()
+f=addr[0]
+if f.isdigit()==True: #given input has integers
+    l=list(map(int,addr.split(".")))
+    l=[chr(i) for i in l]
+    s=".".join(l)
+    print(s)
+
 
 
 ## 4. Check whether given string is isogram or not.
@@ -26,8 +80,18 @@ for i in range(len(n)):
   
 ## 6. Given a number, find the largest number by deleting single digit (order of digits will remain same).
 
+n=input()
+l=[]
+for i in range(len(n)):
+    s=""
+    s=s+n[0:i]+n[i+1:]
+    l.append(int(s))
+print(max(l))
+
+
 
 ## 7. Given a number, find the largest number by shuffling the digits.
+
 n=int(input())
 a=[]
 x=""
@@ -48,8 +112,30 @@ print(a+"  "+str(x))
 
 
 
-## 9. RGB to Hex conversion and vice versa, e.g. (255,0.255) into OxFF00FF
+## 9. RGB to Hex conversion and vice versa, e.g. (255,0.255) into OxFF00FF.
+
+rgb=list(map(int,input("enter RGB").split()))
+rgb=tuple(rgb)
+print("HEX is:",end="")
+print('%02x%02x%02x' % rgb)
+val=input("enter Hex")
+val=val.lstrip('#')
+lv = len(val)
+print(tuple(int(val[i:i+lv//3], 16) for i in range(0,lv, lv//3)))
+
 .
 
 
 ## 10. Generate accumulated strings.e.g. abcd ==> A-Bb-Ccc-Dddd.
+
+      s="abcde"
+      l=list(s)
+      s1=""
+      for i in range(len(l)):
+          if(i==len(l)-1):
+              s1=s1+l[i].upper()+l[i]*i
+          else:
+              s1=s1+l[i].upper()+l[i]*i+"-"
+      print(s1)
+
+
